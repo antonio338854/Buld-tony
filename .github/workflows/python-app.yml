@@ -10,7 +10,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build com Buildozer
-        # O segredo esta nestas letras maiusculas: A e S
+        # ATENÇÃO: O erro está nas letras minúsculas. 
+        # Copie esta linha exatamente como está:
         uses: ArtemSerebriakov/buildozer-action@v1
         with:
           buildozer_version: master
