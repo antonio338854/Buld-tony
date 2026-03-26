@@ -1,4 +1,4 @@
-name: Build Android APK
+name: Build APK
 on: [push, pull_request]
 
 jobs:
@@ -6,19 +6,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout do código
+      - name: Checkout do codigo
         uses: actions/checkout@v4
 
+      # O ERRO ESTÁ AQUI EMBAIXO: COPIE ESTA LINHA EXATAMENTE
       - name: Build com Buildozer
-        # ATENÇÃO: Verifique se as letras A e S estão maiúsculas
         uses: ArtemSerebriakov/buildozer-action@v1
         with:
           buildozer_version: master
           python_version: 3.11
           subcommand: android debug
 
-      - name: Upload do APK Gerado
+      - name: Upload do APK
         uses: actions/upload-artifact@v4
         with:
-          name: Tony-Math-APK
+          name: TonyMath-Package
           path: bin/*.apk
