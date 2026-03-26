@@ -1,4 +1,4 @@
-name: Build APK
+name: Build Android APK
 on: [push, pull_request]
 
 jobs:
@@ -10,15 +10,15 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build com Buildozer
-        # ESTA LINHA É A QUE DÁ O ERRO SE ESTIVER EM MINÚSCULO:
+        # ATENÇÃO: Verifique se as letras A e S estão maiúsculas
         uses: ArtemSerebriakov/buildozer-action@v1
         with:
           buildozer_version: master
           python_version: 3.11
           subcommand: android debug
 
-      - name: Upload do APK
+      - name: Upload do APK Gerado
         uses: actions/upload-artifact@v4
         with:
-          name: package
+          name: Tony-Math-APK
           path: bin/*.apk
