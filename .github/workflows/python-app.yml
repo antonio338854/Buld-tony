@@ -1,7 +1,5 @@
 name: Build Android APK
-on: 
-  push:
-    branches: [ main ]  # Executa toda vez que você der push na main
+on: [push, pull_request]
 
 jobs:
   build:
@@ -11,20 +9,15 @@ jobs:
       - name: Checkout do Código
         uses: actions/checkout@v4
 
-      - name: Instalar Dependências do Sistema
-        run: |
-          sudo apt update
-          sudo apt install -y git zip unzip autoconf automake libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev
-          pip3 install --user --upgrade Cython==0.29.33 virtualenv  # Necessário para o Buildozer
-
-      - name: Build com Buildozer Action
+      - name: Build com Buildozer
+        # Corrigido: Letras maiúsculas no nome do autor
         uses: ArtemSerebriakov/buildozer-action@v1
         with:
           buildozer_version: master
           python_version: 3.11
-          subcommand: android debug  # Gera o APK de teste (debug)
+          subcommand: android debug
 
-      - name: Upload do APK Gerado
+      - name: Upload do APK
         uses: actions/upload-artifact@v4
         with:
           name: meu-app-algebra
