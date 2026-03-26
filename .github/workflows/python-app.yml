@@ -1,4 +1,4 @@
-name: Build APK
+name: Build APK do Tony Math
 on: [push, pull_request]
 
 jobs:
@@ -10,8 +10,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build com Buildozer
-        # ATENÇÃO: O erro está nas letras minúsculas. 
-        # Copie esta linha exatamente como está:
+        # AQUI ESTÁ A CORREÇÃO: Letras A e S maiúsculas
         uses: ArtemSerebriakov/buildozer-action@v1
         with:
           buildozer_version: master
