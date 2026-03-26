@@ -1,4 +1,4 @@
-name: Build Android APK
+name: Build APK
 on: [push, pull_request]
 
 jobs:
@@ -6,11 +6,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout do Código
+      - name: Checkout do código
         uses: actions/checkout@v4
 
       - name: Build com Buildozer
-        # Corrigido: Letras maiúsculas no nome do autor
+        # ESTA LINHA É A QUE DÁ O ERRO SE ESTIVER EM MINÚSCULO:
         uses: ArtemSerebriakov/buildozer-action@v1
         with:
           buildozer_version: master
@@ -20,5 +20,5 @@ jobs:
       - name: Upload do APK
         uses: actions/upload-artifact@v4
         with:
-          name: meu-app-algebra
+          name: package
           path: bin/*.apk
